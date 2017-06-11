@@ -1,0 +1,9 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BuffHelper.Controls"
+    xmlns:converter="using:BuffHelper.TypeConverters">
+    <converter:BuffTypeToBrushConverter x:Key="BuffToBrushConverter" />
+    <converter:BorderBrushConverter x:Key="BuffToBorderBrushConverter" />
+    <converter:NullableBoolToBool x:Key="NullableBoolFalseConverter" />
+</ResourceDictionary>

@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="BuffHelper.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BuffHelper"
+    xmlns:data="using:BuffHelper.Data"
+    xmlns:converter="using:BuffHelper.TypeConverters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:BuffHelper.Controls"
+    mc:Ignorable="d" Margin="0,0,0,0">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Controls\MainResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView ItemsSource="{x:Bind buffs}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="data:ActivatableBuff">
+                    <ToggleButton HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" BorderThickness="3"
+                                  Background="{x:Bind Path=Buff.BuffType, Converter={StaticResource BuffToBrushConverter}}"
+                                  BorderBrush="{x:Bind Path=Buff.BuffType, Converter={StaticResource BuffToBorderBrushConverter}}"
+                                  AutomationProperties.Name="{x:Bind Buff.Name}"
+                                  AutomationProperties.HelpText="{x:Bind Buff.Description}"
+                                  IsChecked="{x:Bind IsActive, Converter={StaticResource NullableBoolFalseConverter}, Mode=TwoWay}">
+                        <ToggleButton.Style>
+                            <!-- On checked status, toggle button was covering the background color with a blue border. -->
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="3" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                            <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4" 
+                                  IsChecked="{x:Bind IsActive, Converter={StaticResource NullableBoolFalseConverter}, Mode=TwoWay}"
+                                  IsTabStop="False"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{x:Bind Path=Buff.Name}"/>
+                            <TextBlock Text="{x:Bind Path=Buff.Description}" />
+                        </StackPanel>
+                    </StackPanel>
+                    </ToggleButton>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Padding" Value="0,2" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="IsTabStop" Value="False" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </Grid>
+</Page>
