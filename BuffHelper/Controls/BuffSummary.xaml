@@ -1,0 +1,18 @@
+﻿<UserControl
+    x:Class="BuffHelper.Controls.BuffSummary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BuffHelper.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="25"
+    d:DesignWidth="400"
+    AutomationProperties.Name="Buff summary"
+    AutomationProperties.HelpText="{x:Bind BuffText, Mode=OneWay}" >
+    <!-- AutomationProperties.LocalizedControlType requires minimum verson 14393. 
+         Removing for now.-->
+
+    <TextBlock Text="{x:Bind BuffText, Mode=OneWay}"
+               Margin="10,0,0,0"/>
+</UserControl>

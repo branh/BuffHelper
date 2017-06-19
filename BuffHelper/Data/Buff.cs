@@ -28,7 +28,7 @@
             }
         }
 
-        public Buff (string name, BuffType buffType, List<Modifier> modifiers)
+        public Buff (string name, BuffType buffType, ICollection<Modifier> modifiers)
         {
             this.Name = name;
             this.BuffType = buffType;

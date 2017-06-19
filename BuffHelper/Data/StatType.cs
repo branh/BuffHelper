@@ -5,6 +5,8 @@
         AC,
         touchAC,
         flatfootedAC,
+        CMB,
+        CMD,
 
         Str,
         Dex,
@@ -12,8 +14,9 @@
         Int,
         Wis,
         Cha,
-
+        
         Skill,
+        Initiative,
 
         MeleeHit,
         MeleeDamage,
