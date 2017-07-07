@@ -52,7 +52,7 @@
             throw new NotImplementedException();
         }
 
-        public Model(List<Buff> buffs)
+        public Model(IEnumerable<Buff> buffs)
         {
             foreach (Buff buff in buffs)
             {

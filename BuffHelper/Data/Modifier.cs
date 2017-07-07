@@ -1,6 +1,7 @@
 ﻿namespace BuffHelper.Data
 {
     using System;
+    using System.Diagnostics;
 
     public class Modifier
     {
@@ -10,6 +11,8 @@
 
         public Modifier(int mod, StatType target, ModifierType modType)
         {
+            Debug.Assert(target != StatTypes.AC, "Did you mean BaseAC?");
+
             this.Mod = mod;
             this.ModType = modType;
             this.Target = target;

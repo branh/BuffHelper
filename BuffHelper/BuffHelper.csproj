@@ -104,6 +104,7 @@
     <Compile Include="Data\Model.cs" />
     <Compile Include="Data\Modifier.cs" />
     <Compile Include="Data\ModifierType.cs" />
+    <Compile Include="Data\PresetBuffList.cs" />
     <Compile Include="Data\StatType.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
