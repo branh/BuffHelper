@@ -13,6 +13,8 @@
     <!-- AutomationProperties.LocalizedControlType requires minimum verson 14393. 
          Removing for now.-->
 
-    <TextBlock Text="{x:Bind BuffText, Mode=OneWay}"
-               Margin="10,0,0,0"/>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" Background="Beige">
+        <TextBlock Text="{x:Bind BuffText, Mode=OneWay}"
+                   Margin="10,0,0,0"/>
+    </ScrollViewer>
 </UserControl>

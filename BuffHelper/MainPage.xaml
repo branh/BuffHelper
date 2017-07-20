@@ -19,7 +19,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <controls:BuffSummary Grid.Row="0"

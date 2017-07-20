@@ -1,11 +1,13 @@
 ﻿namespace BuffHelper.Data
 {
+    using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
     public interface StatType
     {
         string Name { get; }
-        int CalculateTotalModifier(Dictionary<StatType, int> baseStats);
+        int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats);
     }
 
     public static class StatTypes
@@ -29,11 +31,10 @@
         public static StatType RangedDamage = new DerivedStatType("Ranged Damage", StatTypes.Dex);
         public static StatType CMB = new DerivedStatType("CMB", StatTypes.Str);
         public static StatType CMD = new CMDStatType();
-
-        // TODO: Not sure about how we're calculating dodge.
-        public static StatType Dodge = new SimpleStatType("Dodge");
+        
+        public static StatType Dodge = new DerivedStatType("Dodge", StatTypes.Dex);
         public static StatType Armor = new SimpleStatType("Armor");
-        public static StatType BaseAC = new SimpleStatType("Base AC");
+        public static StatType BaseAC = new SimpleStatType("AC");
 
         public static StatType AC = new ACStatType();
         public static StatType touchAC = new TouchACStatType();
@@ -88,6 +89,19 @@
             return results;
         }
 
+        public static bool IsKeyStat(this StatType stat)
+        {
+            return StatTypes.Str == stat ||
+                StatTypes.Dex == stat ||
+                StatTypes.Con == stat ||
+                StatTypes.Int == stat ||
+                StatTypes.Wis == stat ||
+                StatTypes.Cha == stat ||
+                StatTypes.BaseAC == stat ||
+                StatTypes.Dodge == stat ||
+                StatTypes.Armor == stat;
+        }
+
         private class SimpleStatType : StatType
         {
             public string Name { get; private set; }
@@ -97,8 +111,12 @@
                 this.Name = name;
             }
 
-            public virtual int CalculateTotalModifier(Dictionary<StatType, int> baseStats)
+            public virtual int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats)
             {
+                if (!baseStats.ContainsKey(this))
+                {
+                    return 0;
+                }
                 return baseStats[this];
             }
         }
@@ -110,7 +128,7 @@
 
             public DerivedStatType(string name, StatType baseStat) : base(name) { this.BaseStat = baseStat; }
 
-            public override int CalculateTotalModifier(Dictionary<StatType, int> baseStats)
+            public override int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats)
             {
                 // Todo: is rounding ever an issue?
                 return base.CalculateTotalModifier(baseStats) + (BaseStat.CalculateTotalModifier(baseStats) / 2);
@@ -121,7 +139,7 @@
         {
             public SkillStatType(string name, StatType basedStat) : base(name, basedStat) { }
 
-            public override int CalculateTotalModifier(Dictionary<StatType, int> baseStats)
+            public override int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats)
             {
                 return base.CalculateTotalModifier(baseStats) + StatTypes.Skill.CalculateTotalModifier(baseStats);
             }
@@ -131,7 +149,7 @@
         {
             public TouchACStatType() : base("touch", StatTypes.BaseAC) { }
 
-            public override int CalculateTotalModifier(Dictionary<StatType, int> baseStats)
+            public override int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats)
             {
                 return base.CalculateTotalModifier(baseStats) + StatTypes.Dodge.CalculateTotalModifier(baseStats);
             }
@@ -141,8 +159,9 @@
         {
             public FlatfootedACStatType() : base("flat-footed", StatTypes.BaseAC) { }
 
-            public override int CalculateTotalModifier(Dictionary<StatType, int> baseStats)
+            public override int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats)
             {
+                int dodgePenalty = Math.Min(StatTypes.Dodge.CalculateTotalModifier(baseStats), 0);
                 return base.CalculateTotalModifier(baseStats) + StatTypes.Armor.CalculateTotalModifier(baseStats);
             }
         }
@@ -151,7 +170,7 @@
         {
             public ACStatType() : base("AC", StatTypes.BaseAC) { }
 
-            public override int CalculateTotalModifier(Dictionary<StatType, int> baseStats)
+            public override int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats)
             {
                 return base.CalculateTotalModifier(baseStats) + 
                     StatTypes.Armor.CalculateTotalModifier(baseStats) +
@@ -163,7 +182,7 @@
         {
             public CMDStatType() : base("CMD") { }
 
-            public override int CalculateTotalModifier(Dictionary<StatType, int> baseStats)
+            public override int CalculateTotalModifier(ReadOnlyDictionary<StatType, int> baseStats)
             {
                 return base.CalculateTotalModifier(baseStats) + 
                     StatTypes.Str.CalculateTotalModifier(baseStats) + 

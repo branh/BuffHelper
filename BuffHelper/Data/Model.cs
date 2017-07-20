@@ -21,18 +21,19 @@
             get
             {
                 StringBuilder builder = new StringBuilder();
-                foreach (KeyValuePair<StatType, int> kvPair in this.Modifiers)
+                foreach (StatType stat in this.Modifiers.Keys)
                 {
-                    if (kvPair.Value > 0)
+                    int finalModifier = stat.CalculateTotalModifier(this.Modifiers);
+                    if (finalModifier > 0)
                     {
                         builder.Append('+');
                     }
 
-                    if (kvPair.Value != 0)
+                    if (finalModifier != 0)
                     {
-                        builder.Append(kvPair.Value);
+                        builder.Append(finalModifier);
                         builder.Append(' ');
-                        builder.Append(kvPair.Key);
+                        builder.Append(stat.Name);
                         builder.Append(", ");
                     }
                 }
@@ -77,11 +78,11 @@
         /// <returns>Total modifier.
         /// TODO: Probably want to return the calculation as well.
         /// </returns>
-        public int CalculateModifier(StatType stat)
+        public void CalculateBaseModifier(StatType stat)
         {
             if (this.Modifiers.ContainsKey(stat))
             {
-                return this.Modifiers[stat];
+                return;
             }
 
             int result = 0;
@@ -114,7 +115,6 @@
             }
 
             this.modifiers[stat] = result;
-            return result;
         }
 
 
@@ -177,14 +177,27 @@
             this.buffs.Add(activeBuff);
         }
 
+        public void UpdateBuff(ActivatableBuff activeBuff)
+        {
+            bool fullRecalc = activeBuff.Buff.Modifiers.Where(mod => mod.Target.IsKeyStat()).Any();
+            if (fullRecalc)
+            {
+                this.CalculateAllModifiers();
+            }
+            else
+            {
+                foreach (Modifier mod in activeBuff.Buff.Modifiers)
+                {
+                    this.modifiers.Remove(mod.Target);
+                    this.CalculateBaseModifier(mod.Target);
+                }
+            }
+        }
+
         private void ActiveBuff_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             ActivatableBuff activeBuff = (ActivatableBuff)sender;
-            foreach (Modifier mod in activeBuff.Buff.Modifiers)
-            {
-                this.modifiers.Remove(mod.Target);
-                this.CalculateModifier(mod.Target);
-            }
+            UpdateBuff(activeBuff);
 
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AllModifiers"));
         }

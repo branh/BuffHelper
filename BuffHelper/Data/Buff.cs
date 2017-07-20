@@ -18,7 +18,7 @@
                 for (int i = 0; i < this.Modifiers.Count - 1; ++i)
                 {
                     this.AppendModifier(description, this.Modifiers[i]);
-                    description.Append(',');
+                    description.Append(", ");
                 }
                 if (this.Modifiers.Count > 0)
                 {
@@ -43,7 +43,7 @@
             }
             builder.Append(mod.Mod);
             builder.Append(' ');
-            builder.Append(mod.Target);
+            builder.Append(mod.Target.Name);
         }
     }
 }
