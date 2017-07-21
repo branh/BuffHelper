@@ -101,6 +101,7 @@
     <Compile Include="Data\ActivatableBuff.cs" />
     <Compile Include="Data\Buff.cs" />
     <Compile Include="Data\BuffType.cs" />
+    <Compile Include="Data\FilterType.cs" />
     <Compile Include="Data\Model.cs" />
     <Compile Include="Data\Modifier.cs" />
     <Compile Include="Data\ModifierType.cs" />

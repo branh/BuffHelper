@@ -12,6 +12,8 @@
         private Dictionary<StatType, int> modifiers = new Dictionary<StatType, int>();
         private ObservableCollection<ActivatableBuff> buffs = new ObservableCollection<ActivatableBuff>();
 
+        public FilterType[] Filters = { NoFilter.Instance, ActiveFilter.Instance, BuffFilter.Instance, BaneFilter.Instance };
+
         public ReadOnlyObservableCollection<ActivatableBuff> Buffs;
         public ReadOnlyDictionary<StatType, int> Modifiers;
         public event PropertyChangedEventHandler PropertyChanged;
