@@ -1,6 +1,7 @@
 ﻿namespace BuffHelper
 {
     using BuffHelper.Data;
+    using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
 
     /// <summary>
@@ -8,12 +9,17 @@
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private Model Model = new Model(PresetBuffList.DefaultConditionList);
+        private ViewModel ViewModel;
 
         public MainPage()
         {
-            this.Model.CalculateAllModifiers();
+            this.ViewModel = new ViewModel();
             this.InitializeComponent();
+        }
+
+        private void ClearAllBuffs(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.ClearAllBuffs();
         }
     }
 }

@@ -12,8 +12,6 @@
         private Dictionary<StatType, int> modifiers = new Dictionary<StatType, int>();
         private ObservableCollection<ActivatableBuff> buffs = new ObservableCollection<ActivatableBuff>();
 
-        public FilterType[] Filters = { NoFilter.Instance, ActiveFilter.Instance, BuffFilter.Instance, BaneFilter.Instance };
-
         public ReadOnlyObservableCollection<ActivatableBuff> Buffs;
         public ReadOnlyDictionary<StatType, int> Modifiers;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -65,6 +63,7 @@
             }
             this.Buffs = new ReadOnlyObservableCollection<ActivatableBuff>(this.buffs);
             this.Modifiers = new ReadOnlyDictionary<StatType, int>(this.modifiers);
+            this.CalculateAllModifiers();
         }
 
         public Model()
@@ -119,8 +118,7 @@
             this.modifiers[stat] = result;
         }
 
-
-        public void CalculateAllModifiers()
+        private void CalculateAllModifiers()
         {
             this.modifiers.Clear();
             Dictionary<StatType, Dictionary<ModifierType, int> > tallies = 
@@ -170,6 +168,7 @@
                 buff.IsActive = false;
                 buff.PropertyChanged += this.ActiveBuff_PropertyChanged;
             }
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AllModifiers"));
         }
 
         public void AddBuff(Buff buff)
@@ -194,14 +193,14 @@
                     this.CalculateBaseModifier(mod.Target);
                 }
             }
+
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AllModifiers"));
         }
 
         private void ActiveBuff_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             ActivatableBuff activeBuff = (ActivatableBuff)sender;
             UpdateBuff(activeBuff);
-
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AllModifiers"));
         }
     }
 }

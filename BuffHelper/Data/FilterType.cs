@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BuffHelper.Data
+﻿namespace BuffHelper.Data
 {
     public interface FilterType
     {
@@ -20,7 +18,7 @@ namespace BuffHelper.Data
 
         public bool Filter(ActivatableBuff buff)
         {
-            return false; 
+            return true; 
         }
 
         private NoFilter() { }

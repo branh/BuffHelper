@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <controls:BuffSummary Grid.Row="0"
                     HorizontalAlignment="Stretch"
-                    BuffText="{x:Bind Model.AllModifiers, Mode=OneWay}"
+                    BuffText="{x:Bind ViewModel.AllModifiers, Mode=OneWay}"
                     IsTabStop="True" />
         <Grid Grid.Row="1" Background="Beige" >
             <Grid.ColumnDefinitions>
@@ -34,11 +34,12 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="10,5" Content="Add Buff"/>
+            <Button Grid.Column="0" Margin="10,5" Content="Add Buff" HorizontalAlignment="Left"/>
             <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right"
                        Text="Filter by:" />
             <ComboBox Grid.Column="2" VerticalAlignment="Center"
-                      Margin="5" Width="40" ItemsSource="{x:Bind Model.Filters}" >
+                      Margin="5" Width="40" ItemsSource="{x:Bind ViewModel.Filters}" 
+                      SelectedIndex="{x:Bind ViewModel.CurrentFilterIndex, Mode=TwoWay}" >
                 <ComboBox.Resources>
                     <DataTemplate x:Key="ComboBoxItem" x:DataType="data:FilterType">
                         <TextBlock Text="{x:Bind Path=FilterName}"/>
@@ -48,9 +49,9 @@
                     <StaticResource ResourceKey="ComboBoxItem"/>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Column="3" Margin="5, 5" Content="Clear Buffs" />
+            <Button Grid.Column="3" Margin="5, 5" Content="Clear Buffs"  HorizontalAlignment="Right" Click="ClearAllBuffs"/>
         </Grid>
-        <ListView ItemsSource="{x:Bind Model.Buffs, Mode=OneWay}" Grid.Row="2">
+        <ListView ItemsSource="{x:Bind ViewModel.Buffs, Mode=OneWay}" Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="data:ActivatableBuff">
                     <ToggleButton HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" BorderThickness="3"
