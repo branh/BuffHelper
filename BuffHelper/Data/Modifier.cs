@@ -5,9 +5,9 @@
 
     public class Modifier
     {
-        public int Mod { get; private set; }
-        public ModifierType ModType { get; private set; }
-        public StatType Target { get; private set; }
+        public int Mod { get; set; }
+        public ModifierType ModType { get; set; }
+        public StatType Target { get; set; }
 
         public Modifier(int mod, StatType target, ModifierType modType)
         {

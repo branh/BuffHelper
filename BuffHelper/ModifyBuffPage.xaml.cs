@@ -7,20 +7,23 @@
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ModifyBuffPage : Page
     {
-        private ViewModel ViewModel;
+        private Buff Buff;
 
-        public MainPage()
+        public ModifyBuffPage()
         {
-            App app = App.Current as App;
-            this.ViewModel = new ViewModel(app.Model);
             this.InitializeComponent();
         }
 
-        private void ClearAllBuffs(object sender, RoutedEventArgs e)
+        private void Save(object sender, RoutedEventArgs e)
         {
-            this.ViewModel.ClearAllBuffs();
+
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

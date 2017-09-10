@@ -6,4 +6,6 @@
     <converter:BuffTypeToBrushConverter x:Key="BuffToBrushConverter" />
     <converter:BorderBrushConverter x:Key="BuffToBorderBrushConverter" />
     <converter:NullableBoolToBool x:Key="NullableBoolFalseConverter" />
+    <converter:StringToCheckedIntConverter x:Key="StringToCheckedIntConverter" />
+    <converter:CheckedIntToVisibilityConverter x:Key="CheckedIntToVisibilityConverter" />
 </ResourceDictionary>

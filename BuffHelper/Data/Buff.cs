@@ -6,7 +6,7 @@
 
     public class Buff
     {
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public BuffType BuffType { get; private set; }
         public readonly ObservableCollection<Modifier> Modifiers;
 

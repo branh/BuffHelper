@@ -55,8 +55,8 @@
         public ViewModel(Model model)
         {
             this.model = model;
-            this.model.PropertyChanged += this.OnNotifyPropertyChanged;
             this.currentFilter = 0;
+            this.model.PropertyChanged += this.OnNotifyPropertyChanged;
         }
 
         public void ClearAllBuffs()
