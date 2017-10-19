@@ -22,5 +22,10 @@
         {
             this.ViewModel.ClearAllBuffs();
         }
+
+        private void AddBuff(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ModifyBuffPage));
+        }
     }
 }

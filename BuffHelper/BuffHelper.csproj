@@ -98,6 +98,9 @@
     <Compile Include="Controls\BuffSummary.xaml.cs">
       <DependentUpon>BuffSummary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ModifierDescription.xaml.cs">
+      <DependentUpon>ModifierDescription.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\ActivatableBuff.cs" />
     <Compile Include="Data\Buff.cs" />
     <Compile Include="Data\BuffType.cs" />
@@ -148,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\ModifierDescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>

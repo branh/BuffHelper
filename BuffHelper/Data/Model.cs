@@ -97,8 +97,7 @@
                     {
                         continue;
                     }
-                    else if (relevantModifier.Mod < 0 ||
-                            relevantModifier.ModType == ModifierType.Untyped || relevantModifier.ModType == ModifierType.Dodge)
+                    else if (relevantModifier.Mod < 0 || relevantModifier.ModType.IsStackable)
                     {
                         result += relevantModifier.Mod;
                     }
@@ -136,8 +135,7 @@
                             this.modifiers[mod.Target] = 0;
                         }
 
-                        if (mod.Mod < 0 ||
-                            mod.ModType == ModifierType.Untyped || mod.ModType == ModifierType.Dodge)
+                        if (mod.Mod < 0 || mod.ModType.IsStackable)
                         {
                             this.modifiers[mod.Target] += mod.Mod;
                         }

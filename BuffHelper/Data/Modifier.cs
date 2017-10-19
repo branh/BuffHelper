@@ -27,7 +27,7 @@
 
             this.Mod = mod;
             this.Target = target;
-            this.ModType = ModifierType.Untyped;
+            this.ModType = ModifierTypes.Untyped;
         }
     }
 }

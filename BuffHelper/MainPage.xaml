@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="10, 5, 20, 5" Content="Add Buff" HorizontalAlignment="Left"/>
+            <Button Grid.Column="0" Margin="10, 5, 20, 5" Content="Add Buff" HorizontalAlignment="Left" Click="AddBuff" />
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />

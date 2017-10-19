@@ -74,8 +74,8 @@
                                              new Modifier(-2, StatTypes.CMB) };
             result.Add(new Buff("Grappled", BuffType.Bane, grappledModifiers));
 
-            Modifier[] invisibleModifiers = { new Modifier(2, StatTypes.MeleeHit, ModifierType.Untyped),
-                                              new Modifier(2, StatTypes.RangedHit, ModifierType.Untyped) };
+            Modifier[] invisibleModifiers = { new Modifier(2, StatTypes.MeleeHit, ModifierTypes.Untyped),
+                                              new Modifier(2, StatTypes.RangedHit, ModifierTypes.Untyped) };
             result.Add(new Buff("Invisibile", BuffType.Bane, invisibleModifiers));
 
             // TODO: Add Panicked and beyond.

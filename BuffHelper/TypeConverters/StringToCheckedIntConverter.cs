@@ -8,6 +8,11 @@
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            return value.ToString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
             string valString = value.ToString();
             int result;
             if (!int.TryParse(valString, out result))
@@ -16,18 +21,13 @@
             }
             return result;
         }
-
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            return value.ToString();
-        }
     }
 
     public class CheckedIntToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (int.MinValue.Equals(value))
+            if (int.Equals(int.MinValue, value))
             {
                 return Visibility.Visible;
             }

@@ -67,21 +67,56 @@
         public static StatType Swim = new SkillStatType("Swim", StatTypes.Str);
         public static StatType UMD = new SkillStatType("Use Magic Device", StatTypes.Cha);
 
-        public static IEnumerable<Modifier> ModifyAllAttackRolls(int modifier, ModifierType modType = ModifierType.Untyped)
+        public static StatType[] AllStatsList =
+        {
+            StatTypes.Str, StatTypes.Dex, StatTypes.Con, StatTypes.Int, StatTypes.Wis, StatTypes.Cha,
+            StatTypes.Skill, StatTypes.Init,
+            StatTypes.Fortitude, StatTypes.Reflex, StatTypes.Will,
+            StatTypes.MeleeHit, StatTypes.MeleeDamage, StatTypes.RangedHit, StatTypes.RangedDamage,
+            StatTypes.CMB, StatTypes.CMD,
+            StatTypes.Dodge, StatTypes.Armor, StatTypes.BaseAC,
+
+            /* Intentionally do not include AC, touchAC, and flatfootedAC */
+
+            StatTypes.Acrobatics, StatTypes.Appraise, StatTypes.Bluff, StatTypes.Climb, StatTypes.Craft,
+            StatTypes.Diplomacy, StatTypes.DisableDevice, StatTypes.Disguise,
+            StatTypes.EscapeArtist, StatTypes.Fly, StatTypes.HandleAnimal, StatTypes.Heal,
+            StatTypes.Intimidate, StatTypes.Knowledge, StatTypes.Linguistics,
+            StatTypes.Perception, StatTypes.Perception, StatTypes.Profession, StatTypes.Ride,
+            StatTypes.SenseMotive, StatTypes.SlightHand, StatTypes.Stealth, StatTypes.Survival, StatTypes.Swim,
+            StatTypes.UMD
+        };
+
+        public static IEnumerable<Modifier> ModifyAllAttackRolls(int modifier)
+        {
+            return StatTypes.ModifyAllAttackRolls(modifier, ModifierTypes.Untyped);
+        }
+
+        public static IEnumerable<Modifier> ModifyAllAttackRolls(int modifier, ModifierType modType)
         {
             Modifier[] results = { new Modifier(modifier, StatTypes.MeleeHit, modType),
                                    new Modifier(modifier, StatTypes.RangedHit, modType)};
             return results;
         }
 
-        public static IEnumerable<Modifier> ModifyAllDamageRolls(int modifier, ModifierType modType = ModifierType.Untyped)
+        public static IEnumerable<Modifier> ModifyAllDamageRolls(int modifier)
+        {
+            return StatTypes.ModifyAllDamageRolls(modifier, ModifierTypes.Untyped);
+        }
+
+        public static IEnumerable<Modifier> ModifyAllDamageRolls(int modifier, ModifierType modType)
         {
             Modifier[] results = { new Modifier(modifier, StatTypes.MeleeDamage, modType),
                                    new Modifier(modifier, StatTypes.RangedDamage, modType)};
             return results;
         }
 
-        public static IEnumerable<Modifier> ModifyAllSaves(int modifier, ModifierType modType = ModifierType.Untyped)
+        public static IEnumerable<Modifier> ModifyAllSaves(int modifier)
+        {
+            return StatTypes.ModifyAllSaves(modifier, ModifierTypes.Untyped);
+        }
+
+        public static IEnumerable<Modifier> ModifyAllSaves(int modifier, ModifierType modType)
         {
             Modifier[] results = { new Modifier(modifier, StatTypes.Fortitude, modType),
                                    new Modifier(modifier, StatTypes.Reflex, modType),
