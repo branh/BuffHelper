@@ -29,5 +29,10 @@
             this.Target = target;
             this.ModType = ModifierTypes.Untyped;
         }
+
+        public static Modifier CreateUninitializedModifier()
+        {
+            return new Modifier(0, StatTypes.Skill);
+        }
     }
 }

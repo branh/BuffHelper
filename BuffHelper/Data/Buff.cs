@@ -45,5 +45,12 @@
             builder.Append(' ');
             builder.Append(mod.Target.Name);
         }
+
+        public static Buff CreateUninitializedBuff()
+        {
+            List<Modifier> modifiers = new List<Modifier>();
+            modifiers.Add(Modifier.CreateUninitializedModifier());
+            return new Buff("Unsaved", BuffType.Neutral, modifiers);
+        }
     }
 }

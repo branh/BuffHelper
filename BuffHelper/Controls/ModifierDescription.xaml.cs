@@ -11,8 +11,8 @@
         private StatType[] statTypes;
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(int), typeof(ModifierDescription), new PropertyMetadata(0));
-        public static readonly DependencyProperty ModifierTypeProperty = DependencyProperty.Register("ModifierType", typeof(IModifierType), typeof(ModifierDescription), new PropertyMetadata(ModifierTypes.Untyped));
-        public static readonly DependencyProperty StatTypeProperty = DependencyProperty.Register("StatType", typeof(StatType), typeof(ModifierDescription), new PropertyMetadata(StatTypes.Skill));
+        public static readonly DependencyProperty ModifierTypeProperty = DependencyProperty.Register("ModifierType", typeof(int), typeof(ModifierDescription), new PropertyMetadata(0));
+        public static readonly DependencyProperty StatTypeProperty = DependencyProperty.Register("StatType", typeof(int), typeof(ModifierDescription), new PropertyMetadata(0));
 
         public int Value
         {
@@ -26,11 +26,11 @@
             }
         }
 
-        public ModifierType ModifierType
+        public int ModifierType
         {
             get
             {
-                return (ModifierType)GetValue(ModifierDescription.ModifierTypeProperty);
+                return (int)GetValue(ModifierDescription.ModifierTypeProperty);
             }
             set
             {
@@ -38,11 +38,11 @@
             }
         }
 
-        public StatType StatType
+        public int StatType
         {
             get
             {
-                return (StatType)GetValue(ModifierDescription.StatTypeProperty);
+                return (int)GetValue(ModifierDescription.StatTypeProperty);
             }
             set
             {

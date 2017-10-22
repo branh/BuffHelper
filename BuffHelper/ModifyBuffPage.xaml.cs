@@ -1,6 +1,5 @@
 ﻿namespace BuffHelper
 {
-    using System.Collections.Generic;
     using BuffHelper.Data;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
@@ -16,7 +15,7 @@
 
         public ModifyBuffPage()
         {
-            this.buff = ModifyBuffPage.CreateUninitializedBuff();
+            this.buff = Buff.CreateUninitializedBuff();
             this.InitializeComponent();
         }
 
@@ -25,26 +24,21 @@
             if (this.activeBuff == null)
             {
                 App app = App.Current as App;
-                app.Model.AddBuff(this.activeBuff.Buff);
+                app.Model.AddBuff(this.buff);
             }
             else
             {
                 this.activeBuff.ReplaceBuff(this.buff);
             }
+
+            this.Frame.Navigate(typeof(MainPage));
         }
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
-
-        private static Buff CreateUninitializedBuff()
-        {
-            List<Modifier> modifiers = new List<Modifier>();
-            modifiers.Add(new Modifier(0, StatTypes.AC));
-            return new Buff("Unsaved", BuffType.Neutral, modifiers);
-        }
-
+        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.activeBuff = e?.Parameter as ActivatableBuff;
@@ -54,10 +48,15 @@
             }
             else
             {
-                this.buff = ModifyBuffPage.CreateUninitializedBuff();
+                this.buff = Buff.CreateUninitializedBuff();
             }
 
             base.OnNavigatedTo(e);
+        }
+
+        private void AddModifier(object sender, RoutedEventArgs e)
+        {
+            this.buff.Modifiers.Add(Modifier.CreateUninitializedModifier());
         }
     }
 }

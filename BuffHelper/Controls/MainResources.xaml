@@ -5,7 +5,12 @@
     xmlns:converter="using:BuffHelper.TypeConverters">
     <converter:BuffTypeToBrushConverter x:Key="BuffToBrushConverter" />
     <converter:BorderBrushConverter x:Key="BuffToBorderBrushConverter" />
+    <converter:IntEnumConverter x:Key="IntEnumConverter" />
+    <converter:IntToBonusPenaltyConverter x:Key="IntToBonusPenaltyConverter" />
     <converter:NullableBoolToBool x:Key="NullableBoolFalseConverter" />
     <converter:StringToCheckedIntConverter x:Key="StringToCheckedIntConverter" />
     <converter:CheckedIntToVisibilityConverter x:Key="CheckedIntToVisibilityConverter" />
+
+    <converter:ModifierTypeToIndexConverter x:Key="ModifierTypeToIntConverter" />
+    <converter:StatTypeToIndexConverter x:Key="StatTypeToIntConverter" />
 </ResourceDictionary>

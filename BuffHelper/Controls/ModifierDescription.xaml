@@ -19,22 +19,37 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBox Text="{x:Bind Value, Mode=TwoWay, Converter={StaticResource StringToCheckedIntConverter}}" Grid.Column="0" />
-        <ComboBox ItemsSource="{x:Bind modifierTypes}" SelectedItem="{x:Bind Mode=OneWay, Path=ModifierType}" Grid.Column="1">
+        <TextBox Width="50" Grid.Column="0" Margin="0,3,0,0"
+            Text="{x:Bind Value, Mode=TwoWay, Converter={StaticResource StringToCheckedIntConverter}}" UseLayoutRounding="False" />
+        <ComboBox ItemsSource="{x:Bind modifierTypes}" SelectedIndex="{x:Bind Mode=TwoWay, Path=ModifierType}"
+                  Grid.Column="2" Margin="0,3,0,0">
             <ComboBox.Resources>
-                <DataTemplate x:Key="ComboDataTemplate" x:DataType="data:ModifierType">
-                    <Grid>
-                    </Grid>
+                <DataTemplate x:Key="ModifierComboDataTemplate" x:DataType="data:ModifierType">
+                    <TextBlock Text="{x:Bind Name}" />
                 </DataTemplate>
             </ComboBox.Resources>
             <ComboBox.ItemTemplate>
-                <StaticResource ResourceKey="ComboDataTemplate" />
+                <StaticResource ResourceKey="ModifierComboDataTemplate" />
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Grid.Column="3" Margin="5,7" 
+                   Text="{x:Bind Value, Mode=OneWay, Converter={StaticResource IntToBonusPenaltyConverter}}" />
+
+        <ComboBox ItemsSource="{x:Bind statTypes}" SelectedIndex="{x:Bind Mode=TwoWay, Path=StatType}"
+                  Grid.Column="5" Margin="0,3,0,0">
+            <ComboBox.Resources>
+                <DataTemplate x:Key="StatTypeComboDataTemplate" x:DataType="data:StatType">
+                    <TextBlock Text="{x:Bind Name}" />
+                </DataTemplate>
+            </ComboBox.Resources>
+            <ComboBox.ItemTemplate>
+                <StaticResource ResourceKey="StatTypeComboDataTemplate" />
             </ComboBox.ItemTemplate>
         </ComboBox>
     </Grid>

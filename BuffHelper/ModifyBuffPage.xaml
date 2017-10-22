@@ -38,11 +38,14 @@
         </Grid>
         <ListView Grid.Row="3" ItemsSource="{x:Bind buff.Modifiers}">
             <ListView.ItemTemplate>
-                <!--Should be x:DataType="data:Modifier", but for some reason that causes an XBF generation issue-->
-                <DataTemplate>
-                    <controls:ModifierDescription />
+                <DataTemplate x:DataType="data:Modifier">
+                    <controls:ModifierDescription Value="{x:Bind Mod, Mode=TwoWay}"
+                                                  ModifierType="{x:Bind ModType, Mode=TwoWay, Converter={StaticResource ModifierTypeToIntConverter}}"
+                                                  StatType="{x:Bind Target, Mode=TwoWay, Converter={StaticResource StatTypeToIntConverter}}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Grid.Row="4" HorizontalAlignment="Right"
+                Content="+" Click="AddModifier" />
     </Grid>
 </Page>
