@@ -41,11 +41,18 @@
                 <DataTemplate x:DataType="data:Modifier">
                     <controls:ModifierDescription Value="{x:Bind Mod, Mode=TwoWay}"
                                                   ModifierType="{x:Bind ModType, Mode=TwoWay, Converter={StaticResource ModifierTypeToIntConverter}}"
-                                                  StatType="{x:Bind Target, Mode=TwoWay, Converter={StaticResource StatTypeToIntConverter}}" />
+                                                  StatType="{x:Bind Target, Mode=TwoWay, Converter={StaticResource StatTypeToIntConverter}}"
+                                                  Tapped="ShowFlyout" HorizontalAlignment="Stretch">
+                        <controls:ModifierDescription.ContextFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Text="Remove" Click="RemoveModifier" />
+                            </MenuFlyout>
+                        </controls:ModifierDescription.ContextFlyout>
+                    </controls:ModifierDescription>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="4" HorizontalAlignment="Right"
+        <Button Grid.Row="4" HorizontalAlignment="Right" Margin="30"
                 Content="+" Click="AddModifier" />
     </Grid>
 </Page>

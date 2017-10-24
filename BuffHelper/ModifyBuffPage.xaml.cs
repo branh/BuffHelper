@@ -3,6 +3,7 @@
     using BuffHelper.Data;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Input;
     using Windows.UI.Xaml.Navigation;
 
     /// <summary>
@@ -21,6 +22,14 @@
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            foreach(Modifier mod in this.buff.Modifiers)
+            {
+                if (mod.Mod == 0)
+                {
+                    this.buff.Modifiers.Remove(mod);
+                }
+            }
+
             if (this.activeBuff == null)
             {
                 App app = App.Current as App;
@@ -57,6 +66,18 @@
         private void AddModifier(object sender, RoutedEventArgs e)
         {
             this.buff.Modifiers.Add(Modifier.CreateUninitializedModifier());
+        }
+
+        private void RemoveModifier(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement source = (FrameworkElement)sender;
+            Modifier sourceModifier = (Modifier)source.DataContext;
+            this.buff.Modifiers.Remove(sourceModifier);
+        }
+
+        private void ShowFlyout(object sender, TappedRoutedEventArgs e)
+        {
+            Flyout.ShowAttachedFlyout((FrameworkElement)sender);
         }
     }
 }
