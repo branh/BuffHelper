@@ -1,8 +1,10 @@
 ﻿namespace BuffHelper
 {
     using BuffHelper.Data;
+    using Windows.Foundation;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Controls.Primitives;
     using Windows.UI.Xaml.Input;
     using Windows.UI.Xaml.Navigation;
 
@@ -75,9 +77,21 @@
             this.buff.Modifiers.Remove(sourceModifier);
         }
 
-        private void ShowFlyout(object sender, TappedRoutedEventArgs e)
+        private void ShowFlyout(object sender, Point location)
         {
-            Flyout.ShowAttachedFlyout((FrameworkElement)sender);
+            FrameworkElement target = (FrameworkElement)sender;
+            MenuFlyout flyout = (MenuFlyout)FlyoutBase.GetAttachedFlyout(target);
+            flyout.ShowAt(target, location);
+        }
+
+        private void ShowFlyoutHolding(object sender, HoldingRoutedEventArgs e)
+        {
+            this.ShowFlyout(sender, e.GetPosition((UIElement)sender));
+        }
+
+        private void ShowFlyoutTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            this.ShowFlyout(sender, e.GetPosition((UIElement)sender));
         }
     }
 }

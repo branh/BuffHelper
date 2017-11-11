@@ -36,21 +36,28 @@
             <TextBlock Text="Name:" Margin="10, 5, 5, 5" HorizontalAlignment="Left" Grid.Column="0"/>
             <TextBox Text="{x:Bind buff.Name, Mode=TwoWay}" Margin="0, 0, 20, 0" HorizontalAlignment="Stretch" Grid.Column="1" />
         </Grid>
-        <ListView Grid.Row="3" ItemsSource="{x:Bind buff.Modifiers}">
+        <ListView Grid.Row="3" x:Name="modifiersList" ItemsSource="{x:Bind buff.Modifiers}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="data:Modifier">
                     <controls:ModifierDescription Value="{x:Bind Mod, Mode=TwoWay}"
+                                                  Background="Transparent"
                                                   ModifierType="{x:Bind ModType, Mode=TwoWay, Converter={StaticResource ModifierTypeToIntConverter}}"
                                                   StatType="{x:Bind Target, Mode=TwoWay, Converter={StaticResource StatTypeToIntConverter}}"
-                                                  Tapped="ShowFlyout" HorizontalAlignment="Stretch">
-                        <controls:ModifierDescription.ContextFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem Text="Remove" Click="RemoveModifier" />
+                                                  RightTapped="ShowFlyoutTapped" Holding="ShowFlyoutHolding" HorizontalAlignment="Stretch">
+                        <FlyoutBase.AttachedFlyout>
+                            <MenuFlyout MenuFlyoutPresenterStyle="{StaticResource MarginlessFlyout}">
+                                <MenuFlyoutItem Text="Remove" Click="RemoveModifier" Margin="0" />
                             </MenuFlyout>
-                        </controls:ModifierDescription.ContextFlyout>
+                        </FlyoutBase.AttachedFlyout>
                     </controls:ModifierDescription>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
         <Button Grid.Row="4" HorizontalAlignment="Right" Margin="30"
                 Content="+" Click="AddModifier" />

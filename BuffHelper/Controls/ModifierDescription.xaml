@@ -17,7 +17,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="20" />
@@ -25,7 +25,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBox Width="50" Grid.Column="0" Margin="0,3,0,0"
+        <TextBox Width="50" Grid.Column="0" Margin="2,3,5,8"
             Text="{x:Bind Value, Mode=TwoWay, Converter={StaticResource StringToCheckedIntConverter}}" UseLayoutRounding="False" />
         <ComboBox ItemsSource="{x:Bind modifierTypes}" SelectedIndex="{x:Bind Mode=TwoWay, Path=ModifierType}"
                   Grid.Column="2" Margin="0,3,0,0">
