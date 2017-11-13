@@ -98,6 +98,7 @@
     <Compile Include="Controls\BuffSummary.xaml.cs">
       <DependentUpon>BuffSummary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FlyoutHelper.cs" />
     <Compile Include="Controls\ModifierDescription.xaml.cs">
       <DependentUpon>ModifierDescription.xaml</DependentUpon>
     </Compile>

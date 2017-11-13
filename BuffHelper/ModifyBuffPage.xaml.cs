@@ -76,22 +76,5 @@
             Modifier sourceModifier = (Modifier)source.DataContext;
             this.buff.Modifiers.Remove(sourceModifier);
         }
-
-        private void ShowFlyout(object sender, Point location)
-        {
-            FrameworkElement target = (FrameworkElement)sender;
-            MenuFlyout flyout = (MenuFlyout)FlyoutBase.GetAttachedFlyout(target);
-            flyout.ShowAt(target, location);
-        }
-
-        private void ShowFlyoutHolding(object sender, HoldingRoutedEventArgs e)
-        {
-            this.ShowFlyout(sender, e.GetPosition((UIElement)sender));
-        }
-
-        private void ShowFlyoutTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            this.ShowFlyout(sender, e.GetPosition((UIElement)sender));
-        }
     }
 }

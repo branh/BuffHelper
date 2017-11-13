@@ -65,7 +65,8 @@
                                   BorderBrush="{x:Bind Path=Buff.BuffType, Converter={StaticResource BuffToBorderBrushConverter}}"
                                   AutomationProperties.Name="{x:Bind Buff.Name}"
                                   AutomationProperties.HelpText="{x:Bind Buff.Description}"
-                                  IsChecked="{x:Bind IsActive, Converter={StaticResource NullableBoolFalseConverter}, Mode=TwoWay}">
+                                  IsChecked="{x:Bind IsActive, Converter={StaticResource NullableBoolFalseConverter}, Mode=TwoWay}"
+                                  RightTapped="ShowFlyoutTapped" Holding="ShowFlyoutHolding">
                         <ToggleButton.Style>
                             <!-- On checked status, toggle button was covering the background color with a blue border. -->
                             <Style TargetType="ToggleButton">
@@ -84,11 +85,17 @@
                             <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4" 
                                   IsChecked="{x:Bind IsActive, Converter={StaticResource NullableBoolFalseConverter}, Mode=TwoWay}"
                                   IsTabStop="False"/>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{x:Bind Path=Buff.Name}"/>
-                            <TextBlock Text="{x:Bind Path=Buff.Description}" />
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{x:Bind Path=Buff.Name}"/>
+                                <TextBlock Text="{x:Bind Path=Buff.Description}" />
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
+                        <FlyoutBase.AttachedFlyout>
+                            <MenuFlyout MenuFlyoutPresenterStyle="{StaticResource MarginlessFlyout}">
+                                <MenuFlyoutItem Text="Edit" Click="EditBuff" />
+                                <MenuFlyoutItem Text="Remove" Click="RemoveBuff" />
+                            </MenuFlyout>
+                        </FlyoutBase.AttachedFlyout>
                     </ToggleButton>
                 </DataTemplate>
             </ListView.ItemTemplate>

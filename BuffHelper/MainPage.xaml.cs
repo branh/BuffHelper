@@ -1,8 +1,10 @@
 ﻿namespace BuffHelper
 {
+    using BuffHelper.Controls;
     using BuffHelper.Data;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Input;
 
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -26,6 +28,29 @@
         private void AddBuff(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ModifyBuffPage));
+        }
+
+        private void RemoveBuff(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditBuff(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement target = (FrameworkElement)sender;
+            this.Frame.Navigate(typeof(ModifyBuffPage), target.DataContext);
+        }
+
+        private void ShowFlyoutHolding(object sender, HoldingRoutedEventArgs e)
+        {
+            FrameworkElement target = (FrameworkElement)sender;
+            FlyoutHelper.ShowFlyout(target, e.GetPosition(target));
+        }
+
+        private void ShowFlyoutTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            FrameworkElement target = (FrameworkElement)sender;
+            FlyoutHelper.ShowFlyout(target, e.GetPosition(target));
         }
     }
 }
