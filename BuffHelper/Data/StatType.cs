@@ -21,8 +21,8 @@
         public static StatType Skill = new SimpleStatType("Skill", 6);
 
         public static StatType Init = new DerivedStatType("Init", StatTypes.Dex, 7);
-        public static StatType Reflex = new DerivedStatType("Ref", StatTypes.Dex, 8);
-        public static StatType Fortitude = new DerivedStatType("Fort", StatTypes.Con, 9);
+        public static StatType Fortitude = new DerivedStatType("Fort", StatTypes.Con, 8);
+        public static StatType Reflex = new DerivedStatType("Ref", StatTypes.Dex, 9);
         public static StatType Will = new DerivedStatType("Will", StatTypes.Wis, 10);
 
         public static StatType MeleeHit = new DerivedStatType("Melee Attack", StatTypes.Str, 11);

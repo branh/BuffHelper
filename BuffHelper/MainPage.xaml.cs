@@ -32,7 +32,9 @@
 
         private void RemoveBuff(object sender, RoutedEventArgs e)
         {
-
+            FrameworkElement source = (FrameworkElement)sender;
+            ActivatableBuff sourceBuff = (ActivatableBuff)source.DataContext;
+            this.ViewModel.RemoveBuff(sourceBuff);
         }
 
         private void EditBuff(object sender, RoutedEventArgs e)

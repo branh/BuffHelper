@@ -32,16 +32,17 @@
                 }
             }
 
+            App app = App.Current as App;
             if (this.activeBuff == null)
             {
-                App app = App.Current as App;
                 app.Model.AddBuff(this.buff);
             }
             else
             {
-                this.activeBuff.ReplaceBuff(this.buff);
+                this.activeBuff.ReplaceBuff(this.buff, app.Model);
             }
 
+            app.Model.CalculateAllModifiers();
             this.Frame.Navigate(typeof(MainPage));
         }
 

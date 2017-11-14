@@ -59,6 +59,12 @@
             this.model.PropertyChanged += this.OnNotifyPropertyChanged;
         }
 
+        public void RemoveBuff(ActivatableBuff buff)
+        {
+            this.model.RemoveBuff(buff);
+            this.NotifyPropertyChanged("Buffs");
+        }
+
         public void ClearAllBuffs()
         {
             this.model.ClearAllBuffs();

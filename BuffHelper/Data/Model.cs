@@ -117,7 +117,7 @@
             this.modifiers[stat] = result;
         }
 
-        private void CalculateAllModifiers()
+        public void CalculateAllModifiers()
         {
             this.modifiers.Clear();
             Dictionary<StatType, Dictionary<ModifierType, int> > tallies = 
@@ -174,6 +174,14 @@
             ActivatableBuff activeBuff = new ActivatableBuff(buff);
             activeBuff.PropertyChanged += this.ActiveBuff_PropertyChanged;
             this.buffs.Add(activeBuff);
+        }
+
+        public void RemoveBuff(ActivatableBuff buff)
+        {
+            buff.PropertyChanged -= this.ActiveBuff_PropertyChanged;
+            this.buffs.Remove(buff);
+            buff.IsActive = false;
+            this.UpdateBuff(buff);
         }
 
         public void UpdateBuff(ActivatableBuff activeBuff)

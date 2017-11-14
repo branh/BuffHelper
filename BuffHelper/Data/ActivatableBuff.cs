@@ -35,7 +35,7 @@
         /// Used to provide a level of indirection.
         /// </summary>
         /// <param name="newBuff">The new version of the buff</param>
-        public void ReplaceBuff(Buff newBuff)
+        public void ReplaceBuff(Buff newBuff, Model model)
         {
             this.Buff = newBuff;
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsActive"));
