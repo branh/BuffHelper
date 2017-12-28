@@ -82,7 +82,7 @@
                             </Style>
                         </ToggleButton.Style>
                         <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                            <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4" 
+                            <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4, 4, -80, 4" 
                                   IsChecked="{x:Bind IsActive, Converter={StaticResource NullableBoolFalseConverter}, Mode=TwoWay}"
                                   IsTabStop="False"/>
                             <StackPanel Orientation="Vertical">

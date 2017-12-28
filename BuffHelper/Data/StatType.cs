@@ -26,8 +26,8 @@
         public static StatType Will = new DerivedStatType("Will", StatTypes.Wis, 10);
 
         public static StatType MeleeHit = new DerivedStatType("Melee Attack", StatTypes.Str, 11);
-        public static StatType RangedHit = new DerivedStatType("Ranged Attack", StatTypes.Dex, 12);
-        public static StatType MeleeDamage = new DerivedStatType("Melee Damage", StatTypes.Str, 13);
+        public static StatType MeleeDamage = new DerivedStatType("Melee Damage", StatTypes.Str, 12);
+        public static StatType RangedHit = new DerivedStatType("Ranged Attack", StatTypes.Dex, 13);
         public static StatType RangedDamage = new DerivedStatType("Ranged Damage", StatTypes.Dex, 14);
         public static StatType CMB = new DerivedStatType("CMB", StatTypes.Str, 15);
         public static StatType CMD = new CMDStatType(16);
@@ -82,8 +82,8 @@
             StatTypes.Diplomacy, StatTypes.DisableDevice, StatTypes.Disguise,
             StatTypes.EscapeArtist, StatTypes.Fly, StatTypes.HandleAnimal, StatTypes.Heal,
             StatTypes.Intimidate, StatTypes.Knowledge, StatTypes.Linguistics,
-            StatTypes.Perception, StatTypes.Perception, StatTypes.Profession, StatTypes.Ride,
-            StatTypes.SenseMotive, StatTypes.SlightHand, StatTypes.Stealth, StatTypes.Survival, StatTypes.Swim,
+            StatTypes.Perception, StatTypes.Perform, StatTypes.Profession, StatTypes.Ride,
+            StatTypes.SenseMotive, StatTypes.SlightHand, StatTypes.Spellcraft, StatTypes.Stealth, StatTypes.Survival, StatTypes.Swim,
             StatTypes.UMD
         };
 
