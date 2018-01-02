@@ -1,7 +1,7 @@
-﻿namespace BuffHelper.Data
+﻿namespace Pathfinder.Utility.Data
 {
     // Used internally for mimicing some of Java's rich enum support.
-    internal interface IIndexable
+    public interface IIndexable
     {
         int index { get; }
     }

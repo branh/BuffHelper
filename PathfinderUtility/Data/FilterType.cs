@@ -1,4 +1,4 @@
-﻿namespace BuffHelper.Data
+﻿namespace Pathfinder.Utility.Data
 {
     public interface FilterType
     {

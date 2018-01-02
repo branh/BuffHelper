@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{EA3F496B-96D5-4EAB-B76B-E58B7FE2A220}</ProjectGuid>
+    <ProjectGuid>{F823CCB5-A300-451E-BC2C-DE1D418FDDBD}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UnitTests</RootNamespace>
@@ -100,7 +100,7 @@
     <Compile Include="UnitTestApp.xaml.cs">
       <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UnitTest.cs" />
+    <Compile Include="StatTypeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UnitTestApp.xaml">
@@ -125,9 +125,9 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BuffHelper\BuffHelper.csproj">
-      <Project>{c7756e6f-f45a-469c-a188-a174fafcc4dd}</Project>
-      <Name>BuffHelper</Name>
+    <ProjectReference Include="..\PathfinderUtility\PathfinderUtility.csproj">
+      <Project>{2b44c3b7-1cd0-4bba-8477-e69aa4fd40a5}</Project>
+      <Name>PathfinderUtility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

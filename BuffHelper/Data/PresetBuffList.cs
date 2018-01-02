@@ -1,7 +1,7 @@
 ﻿namespace BuffHelper.Data
 {
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
+    using Pathfinder.Utility.Data;
 
     public static class PresetBuffList
     {
@@ -66,7 +66,7 @@
             frightenedModifiers.AddRange(StatTypes.ModifyAllAttackRolls(-2));
             frightenedModifiers.AddRange(StatTypes.ModifyAllSaves(-2));
             frightenedModifiers.Add(new Modifier(-2, StatTypes.Skill));
-            result.Add(new Buff("Freightened", BuffType.Bane, frightenedModifiers));
+            result.Add(new Buff("Frightened", BuffType.Bane, frightenedModifiers));
 
             Modifier[] grappledModifiers = { new Modifier(-4, StatTypes.Dex),
                                              new Modifier(-2, StatTypes.MeleeHit),
@@ -76,7 +76,7 @@
 
             Modifier[] invisibleModifiers = { new Modifier(2, StatTypes.MeleeHit, ModifierTypes.Untyped),
                                               new Modifier(2, StatTypes.RangedHit, ModifierTypes.Untyped) };
-            result.Add(new Buff("Invisibile", BuffType.Bane, invisibleModifiers));
+            result.Add(new Buff("Invisible", BuffType.Bane, invisibleModifiers));
 
             // TODO: Add Panicked and beyond.
             List<Modifier> panickedModifiers = new List<Modifier>();

@@ -1,4 +1,4 @@
-﻿namespace BuffHelper.Data
+﻿namespace Pathfinder.Utility
 {
     using System;
     using System.Collections.Generic;
@@ -6,8 +6,9 @@
     using System.ComponentModel;
     using System.Linq;
     using System.Text;
+    using Pathfinder.Utility.Data;
 
-    public class Model : INotifyPropertyChanged
+    public class BuffModel : INotifyPropertyChanged
     {
         private Dictionary<StatType, int> modifiers = new Dictionary<StatType, int>();
         private ObservableCollection<ActivatableBuff> buffs = new ObservableCollection<ActivatableBuff>();
@@ -47,13 +48,13 @@
             }
         }
 
-        public Model(string FilePath)
+        public BuffModel(string FilePath)
         {
             // TODO: Read in starting values from file.
             throw new NotImplementedException();
         }
 
-        public Model(IEnumerable<Buff> buffs)
+        public BuffModel(IEnumerable<Buff> buffs)
         {
             foreach (Buff buff in buffs)
             {
@@ -66,7 +67,7 @@
             this.CalculateAllModifiers();
         }
 
-        public Model()
+        public BuffModel()
         {
             this.Buffs = new ReadOnlyObservableCollection<ActivatableBuff>(this.buffs);
             this.Modifiers = new ReadOnlyDictionary<StatType, int>(this.modifiers);

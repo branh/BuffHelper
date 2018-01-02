@@ -1,7 +1,6 @@
 ﻿namespace BuffHelper.Controls
 {
-    using System;
-    using BuffHelper.Data;
+    using Pathfinder.Utility.Data;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
 

@@ -5,10 +5,12 @@
     using System.ComponentModel;
     using System.Linq;
     using BuffHelper.Data;
+    using Pathfinder.Utility;
+    using Pathfinder.Utility.Data;
 
     class ViewModel : INotifyPropertyChanged, IDisposable
     {
-        private Model model;
+        private BuffModel model;
         private int currentFilter;
 
         public FilterType[] Filters = { NoFilter.Instance, ActiveFilter.Instance, BuffFilter.Instance, BaneFilter.Instance };
@@ -47,12 +49,12 @@
 
         public ViewModel()
         {
-            this.model = new Model(PresetBuffList.DefaultConditionList);
+            this.model = new BuffModel(PresetBuffList.DefaultConditionList);
             this.currentFilter = 0;
             this.model.PropertyChanged += this.OnNotifyPropertyChanged;
         }
 
-        public ViewModel(Model model)
+        public ViewModel(BuffModel model)
         {
             this.model = model;
             this.currentFilter = 0;

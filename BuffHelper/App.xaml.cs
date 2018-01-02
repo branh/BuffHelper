@@ -2,6 +2,7 @@
 {
     using System;
     using BuffHelper.Data;
+    using Pathfinder.Utility;
     using Windows.ApplicationModel;
     using Windows.ApplicationModel.Activation;
     using Windows.UI.Xaml;
@@ -13,7 +14,7 @@
     /// </summary>
     sealed partial class App : Application
     {
-        public Model Model; 
+        public BuffModel Model;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -21,7 +22,7 @@
         /// </summary>
         public App()
         {
-            this.Model = new Model(PresetBuffList.DefaultConditionList);
+            this.Model = new BuffModel(PresetBuffList.DefaultConditionList);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

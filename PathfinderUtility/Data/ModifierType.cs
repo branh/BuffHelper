@@ -1,7 +1,5 @@
-﻿namespace BuffHelper.Data
+﻿namespace Pathfinder.Utility.Data
 {
-    using System;
-
     public interface IModifierType
     {
         string Name { get; }

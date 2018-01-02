@@ -2,7 +2,7 @@
 {
     using System;
     using System.Diagnostics;
-    using BuffHelper.Data;
+    using Pathfinder.Utility.Data;
     using Windows.UI.Xaml.Data;
 
     public class ModifierTypeToIndexConverter : IValueConverter

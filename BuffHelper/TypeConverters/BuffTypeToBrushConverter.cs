@@ -1,7 +1,7 @@
 ﻿namespace BuffHelper.TypeConverters
 {
     using System;
-    using BuffHelper.Data;
+    using Pathfinder.Utility.Data;
     using Windows.UI;
     using Windows.UI.Xaml.Data;
     using Windows.UI.Xaml.Media;

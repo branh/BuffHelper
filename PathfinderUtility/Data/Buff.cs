@@ -1,4 +1,4 @@
-﻿namespace BuffHelper.Data
+﻿namespace Pathfinder.Utility.Data
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
