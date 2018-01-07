@@ -2,13 +2,31 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     using System.Text;
 
-    public class Buff
+    public class Buff : INotifyPropertyChanged
     {
+        private BuffType buffType;
+
         public string Name { get; set; }
-        public BuffType BuffType { get; private set; }
         public readonly ObservableCollection<Modifier> Modifiers;
+
+        public BuffType BuffType
+        {
+            get
+            {
+                return this.buffType;
+            }
+            set
+            {
+                if (this.buffType != value)
+                {
+                    this.buffType = value;
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BuffType"));
+                }
+            }
+        }
 
         public string Description
         {
@@ -27,6 +45,8 @@
                 return description.ToString();
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Buff (string name, BuffType buffType, ICollection<Modifier> modifiers)
         {

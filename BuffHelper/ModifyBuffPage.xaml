@@ -25,10 +25,24 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Button Content="Save" Margin="20, 5" Click="Save" HorizontalAlignment="Left" />
-            <Button Content="Cancel" Margin="20, 5" Click="Cancel" HorizontalAlignment="Right" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Content="Save" Margin="20, 5" Click="Save" HorizontalAlignment="Left" Grid.Column="0"/>
+                <Slider Value="{x:Bind buff.BuffType, Mode=TwoWay, Converter={StaticResource DoubleEnumConverter}}"
+                        ThumbToolTipValueConverter="{StaticResource BuffToStringConverter}"
+                        Foreground="{x:Bind buff.BuffType, Mode=OneWay, Converter={StaticResource BuffToBorderBrushConverter}}"
+                        Background="{x:Bind buff.BuffType, Mode=OneWay, Converter={StaticResource BuffToBorderBrushConverter}}"
+                        TickPlacement="Inline" Maximum="2" Minimum="0"
+                        HorizontalAlignment="Center" Width="25" Grid.Column="1" Margin="0,3,0,-3"
+                        Style="{StaticResource BuffBaneSlider}" />
+                <Button Content="Cancel" Margin="20, 5" Click="Cancel" HorizontalAlignment="Right" Grid.Column="2"/>
+            </Grid>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="0,2,0,2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />

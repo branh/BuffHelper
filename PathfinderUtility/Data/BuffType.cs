@@ -2,8 +2,8 @@
 {
     public enum BuffType
     {
-        Neutral,
         Buff,
+        Neutral,
         Bane,
     }
 }
